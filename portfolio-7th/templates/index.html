@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About Me</a></li>
+                <li><a href="/projects">Projects</a></li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section>
+        <h1>Halo, saya Aditya Cakti Chandrasa</h1>
+        <p>Mahasiswa Semester 2 Teknik Elektro dengan pengetahuan di bidang pengembangan web dan desain.</p>
+    </section>
+
+    <section>
+        <img src="/static/img/profile.jpg" alt="Foto Aditya Cakti Chandrasa" style="width:200px; height:auto; border-radius:50%;">
+    </section>
+
+    <section>
+        <h2>Tinggalkan Ucapan</h2>
+        <form action="/submit_greeting" method="POST">
+            <input type="text" name="name" placeholder="Nama Anda" required><br><br>
+            <textarea name="message" placeholder="Pesan Anda" required></textarea><br><br>
+            <button type="submit">Submit</button>
+        </form>
+
+        <div>
+            <h3>Ucapan yang sudah masuk:</h3>
+            {% if greetings %}
+                {% for greeting in greetings %}
+                    <p>{{ greeting.name }}: "{{ greeting.message }}"</p>
+                {% endfor %}
+            {% else %}
+                <p>Belum ada ucapan masuk.</p>
+            {% endif %}
+        </div>
+    </section>
+</body>
+</html>
